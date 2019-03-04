@@ -1,0 +1,22 @@
+{% extends "layouts/base_layout.html" %}
+{% load i18n %}
+
+{% block body%}
+<div class="container text-center">
+<a href="{% url 'convertor:post-create' %}" class="btn btn-primary">    
+    {% trans 'create'|capfirst %}
+</a>
+</div>
+<ul>
+{% for item in object_list %}
+  <li>
+    <a href="{% url 'convertor:post-detail' slug=item.slug %}">
+      {{item}}
+      {{item.slug}}
+      {% trans 'details'|capfirst %}
+    </a>
+  </li>  
+{% endfor %}
+</ul>
+
+{% endblock %}

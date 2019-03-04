@@ -1,0 +1,9 @@
+{% extends "layouts/base_layout.html" %}
+{% load i18n %}
+
+{% block body %}
+<a href="{%url 'convertor:post-list'%}">
+    {% trans 'go to list'|capfirst %}
+</a>
+{{object}}
+{% endblock %}

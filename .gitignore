@@ -105,3 +105,6 @@ venv.bak/
 
 # visual studio code folders
 .vscode
+
+static/
+post/

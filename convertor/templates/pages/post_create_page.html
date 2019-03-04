@@ -1,0 +1,15 @@
+{% extends "layouts/base_layout.html" %}
+{% load i18n %}
+
+{% block body %}
+<form method="POST"  enctype="multipart/form-data">
+    {% csrf_token %} 
+    {{ form.as_table }}
+    <button type="submit">
+        {% trans 'create post'|capfirst %}
+    </button>
+    <a href="{%url 'convertor:post-list'%}">
+        {% trans 'cancel'|capfirst %}
+    </a>
+</form>
+{% endblock %}
