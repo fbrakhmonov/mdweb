@@ -1,22 +1,20 @@
 {% extends "layouts/base_layout.html" %}
 {% load i18n %}
-
+{% block page_title%}{% trans 'list of posts'|capfirst %}{% endblock %}
 {% block body%}
 <div class="container text-center">
-<a href="{% url 'convertor:post-create' %}" class="btn btn-primary">    
-    {% trans 'create'|capfirst %}
-</a>
 </div>
-<ul>
 {% for item in object_list %}
-  <li>
-    <a href="{% url 'convertor:post-detail' slug=item.slug %}">
-      {{item}}
-      {{item.slug}}
-      {% trans 'details'|capfirst %}
-    </a>
-  </li>  
+      <div class="list-group">
+          <a href="{% url 'convertor:post-detail' slug=item.slug %}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{ item.title}}</h5>
+              <small>3 days ago</small>
+            </div>
+            <p class="mb-1">{{ item.summary }}</p>
+            <small>here should be file size or comment number</small>
+          </a>
+      </div>
 {% endfor %}
-</ul>
 
 {% endblock %}
