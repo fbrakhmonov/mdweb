@@ -1,15 +1,39 @@
 {% extends "layouts/base_layout.html" %}
-{% load i18n %}
-
+{% load i18n static widget_tweaks%}
 {% block body %}
-<form method="POST"  enctype="multipart/form-data">
+  {% include 'components/navbar_component.html' with active_item="post-create" %}
+  <form method="POST"  enctype="multipart/form-data">
     {% csrf_token %} 
-    {{ form.as_table }}
-    <button type="submit">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1">{% trans 'title'|capfirst%}</span>
+      </div>
+      {% render_field form.title class="form-control" placeholder="Username"  aria-describedby="basic-addon1" %}
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1">https://posts.uz/</span>
+      </div>
+      {% render_field form.slug class="form-control" placeholder="Slug"  aria-describedby="basic-addon1" %}
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1">{% trans 'summary'|capfirst%}</span>
+      </div>
+      {% render_field form.summary class="form-control"  %}
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroupFileAddon01">{% trans 'upload'|capfirst%}</span>
+      </div>
+      <div class="custom-file">
+        {% render_field form.page_md class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"  %}
+        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+        <label class="custom-file-label" for="inputGroupFile01">{% trans 'choose file'|capfirst%}</label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg">
         {% trans 'create post'|capfirst %}
     </button>
-    <a href="{%url 'convertor:post-list'%}">
-        {% trans 'cancel'|capfirst %}
-    </a>
-</form>
+  </form>
 {% endblock %}

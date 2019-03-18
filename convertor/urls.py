@@ -8,7 +8,8 @@ from convertor.views import PostListViewPage, PostDetailViewPage, \
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^$', PostListViewPage.as_view(), name='post-list'),
+    url(r'^$', PostListViewPage.as_view(), name='post-home'),
+    url(r'list', PostListViewPage.as_view(), name='post-list'),
     url(r'create', PostCreateViewPage.as_view(), name='post-create'),
     url(r'detail/(?P<slug>[\w-]+)/$', PostDetailViewPage.as_view(), 
         name='post-detail'),

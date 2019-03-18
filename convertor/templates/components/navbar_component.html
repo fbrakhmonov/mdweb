@@ -1,0 +1,26 @@
+{% load  i18n static %}
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;" >
+  <a class="navbar-brand" href="{% url 'convertor:post-home' %}">{% trans 'home'|capfirst %}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item {% if active_item == 'post-list' %} active {% endif %}">
+        <a class="nav-link" href="{% url 'convertor:post-list' %}">{% trans 'post list'|capfirst %} <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item {% if active_item == 'post-create' %} active  {% endif %}">
+        <a class="nav-link" href="{% url 'convertor:post-create' %}">{% trans 'create post'|capfirst %} <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    {% if active_item == 'post-list' %}
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="{% trans 'search'|capfirst %}" aria-label="{% trans 'search'|capfirst %}">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans 'search'|capfirst %}</button>
+    </form>
+    {% endif %}
+  </div>
+</nav>

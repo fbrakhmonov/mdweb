@@ -31,6 +31,9 @@
     <Content Include="convertor\static\js\bootstrap.bundle.min.js" />
     <Content Include="convertor\static\js\bootstrap.js" />
     <Content Include="convertor\static\js\bootstrap.min.js" />
+    <Content Include="convertor\templates\components\navbar_component.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="convertor\templates\layouts\base_layout.html" />
     <Content Include="convertor\templates\pages\post_create_page.html" />
     <Content Include="convertor\templates\pages\post_detail_page.html" />
@@ -63,6 +66,7 @@
     <Folder Include="convertor\static\js" />
     <Folder Include="convertor\templates\" />
     <Folder Include="convertor\templates\layouts" />
+    <Folder Include="convertor\templates\components\" />
     <Folder Include="convertor\templates\pages" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />

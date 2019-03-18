@@ -1,20 +1,20 @@
 {% extends "layouts/base_layout.html" %}
-{% load i18n %}
+{% load  i18n static %}
 {% block page_title%}{% trans 'list of posts'|capfirst %}{% endblock %}
 {% block body%}
-<div class="container text-center">
-</div>
-{% for item in object_list %}
+  {% include 'components/navbar_component.html' with active_item="post-list" %}
+  <div class="container text-center">
+    {% for item in object_list %}
       <div class="list-group">
-          <a href="{% url 'convertor:post-detail' slug=item.slug %}" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">{{ item.title}}</h5>
-              <small>3 days ago</small>
-            </div>
-            <p class="mb-1">{{ item.summary }}</p>
-            <small>here should be file size or comment number</small>
-          </a>
+        <a href="{% url 'convertor:post-detail' slug=item.slug %}" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ item.title}}</h5>
+            <small>3 days ago</small>
+        </div>
+        <p class="mb-1">{{ item.summary }}</p>
+        <small>here should be file size or comment count</small>
+        </a>
       </div>
-{% endfor %}
-
+    {% endfor %}
+  </div>
 {% endblock %}
